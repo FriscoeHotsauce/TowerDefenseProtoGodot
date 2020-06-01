@@ -10,7 +10,7 @@ var current_time
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	current_time = spawn_interval
+	current_time = 0
 	pass # Replace with function body.
 
 func _process(delta):

@@ -7,7 +7,7 @@
 "enemy",
 ]]
 position = Vector2( 0, -1 )
-rotation = 0.835005
+rotate = false
 loop = false
 script = ExtResource( 1 )
 

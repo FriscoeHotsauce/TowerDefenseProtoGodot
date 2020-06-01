@@ -1,8 +1,11 @@
 extends Node2D
 
-onready var parent = get_parent()
-export var cooldown = 3
-export var turret_range = 0.75
+const Utils = preload("Utils.gd")
+
+export onready var parent = get_parent()
+export onready var laser = parent.find_node("Line2D")
+export var cooldown = 2
+export var turret_range = 200
 var current_target
 var current_time
 
@@ -28,18 +31,11 @@ func acquireTarget():
 	#if we already have a target, don't search for a new one
 	if(current_target != null):
 		return
-
-	var enemies = get_tree().get_nodes_in_group("enemy")
-	for enemy in enemies:
-		var delta_range = self.position.distance_to(enemy.position)
-
-		if(delta_range <= turret_range):
-			print("Target in range: " + str(delta_range))
-			print("Target Acquired! - " + enemy.name)
-			current_target = enemy
-			break
+	else:
+		current_target = Utils.getClosestFromList(get_tree().get_nodes_in_group("enemy"), self.position, turret_range)
 
 func shoot():
+	laser.blast_target(to_local(self.position), to_local(current_target.position))
 	print("Bang!")
 	var killed = current_target.hitMe()
 	if(killed):

@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://spawner.gd" type="Script" id=1]
 [ext_resource path="res://drone.tscn" type="PackedScene" id=2]
 [ext_resource path="res://icon.png" type="Texture" id=3]
 [ext_resource path="res://shooter.gd" type="Script" id=4]
+[ext_resource path="res://laser.gd" type="Script" id=5]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -21,9 +22,17 @@ script = ExtResource( 1 )
 drone = ExtResource( 2 )
 
 [node name="turret" type="Node2D" parent="."]
+position = Vector2( 402.097, 449.952 )
 script = ExtResource( 4 )
 
+[node name="Line2D" type="Line2D" parent="turret"]
+points = PoolVector2Array( -1.51498, -4.94501 )
+width = 5.0
+default_color = Color( 0.882353, 0.494118, 0.262745, 1 )
+antialiased = true
+script = ExtResource( 5 )
+visibility_time = 0.1
+
 [node name="Sprite" type="Sprite" parent="turret"]
-position = Vector2( 405.153, 437.688 )
 scale = Vector2( 0.731433, 0.788983 )
 texture = ExtResource( 3 )

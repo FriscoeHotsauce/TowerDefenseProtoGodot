@@ -15,4 +15,11 @@ func hitMe():
 		self.queue_free()
 		return true
 	else:
+		updateHealthbar()
 		return false
+
+
+#todo
+func updateHealthbar():
+	self.scale.x = (HP / 3.0)
+	self.scale.y = (HP / 3.0)
