@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://spawner.gd" type="Script" id=1]
 [ext_resource path="res://drone.tscn" type="PackedScene" id=2]
 [ext_resource path="res://icon.png" type="Texture" id=3]
 [ext_resource path="res://shooter.gd" type="Script" id=4]
 [ext_resource path="res://laser.gd" type="Script" id=5]
+[ext_resource path="res://GameManager.gd" type="Script" id=6]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -36,3 +37,22 @@ visibility_time = 0.1
 [node name="Sprite" type="Sprite" parent="turret"]
 scale = Vector2( 0.731433, 0.788983 )
 texture = ExtResource( 3 )
+
+[node name="GameManager" type="Control" parent="."]
+margin_left = -21.0
+margin_right = 19.0
+margin_bottom = 40.0
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LivesText" type="Label" parent="GameManager"]
+margin_left = 878.0
+margin_top = 10.0
+margin_right = 1036.0
+margin_bottom = 40.0
+text = "Lives Remaining"
+__meta__ = {
+"_edit_use_anchors_": false
+}
