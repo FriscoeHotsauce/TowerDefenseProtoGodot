@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scripts/spawner.gd" type="Script" id=1]
+[ext_resource path="res://prefabs/drone.tscn" type="PackedScene" id=2]
+[ext_resource path="res://prefabs/turret.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scripts/GameManager.gd" type="Script" id=6]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 0, -1, -22, -16, 22, 16, 44, 40, -13, -33, 13, 33, 85, 93, 0, -19, 0, 19, 96, 143, -8, -23, 8, 23, 145, 266, -9, -14, 9, 14, 166, 335, -27, -20, 27, 20, 246, 467, -37, -1, 37, 1, 401, 520, -16, 18, 16, -18, 509, 487, -1, 14, 1, -14, 538, 404, 15, 13, -15, -13, 531, 305, 7, 15, -7, -15, 483, 269, -26, 30, 26, -30, 503, 189, -16, 4, 16, -4, 618, 122, -25, -3, 25, 3, 686, 110, -18, -14, 18, 14, 810, 163, -5, -10, 5, 10, 855, 260, -7, -24, 7, 24, 905, 406, 0, 0, 0, 0, 905, 501 )
+}
+
+[sub_resource type="Curve2D" id=2]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 0.0262146, 0.842606, -86.5878, -12.9236, 86.5878, 12.9236, 105.999, 17.6432, 0, 0, 0, 0, 201.634, 60.2909, -21.97, -58.156, 21.97, 58.156, 266.251, 141.709, 9.04649, -15.5083, -9.04649, 15.5083, 268.836, 210.204, 0, 0, 0, 0, 249.451, 252.852, 0, 0, 0, 0, 239.112, 309.716, -5.16942, -19.3853, 5.16942, 19.3853, 236.527, 361.41, 0, 0, 0, 0, 257.205, 410.519, 0, 0, 0, 0, 272.713, 459.629, -25.8471, -18.093, 25.8471, 18.093, 306.314, 542.339, -32.3089, -1.29236, 32.3089, 1.29236, 398.072, 568.187, -21.97, 10.3388, 21.97, -10.3388, 492.414, 564.31, 0, 0, 0, 0, 557.031, 503.569, 0, 21.97, 0, -21.97, 585.463, 431.197, 0, 0, 0, 0, 575.124, 347.194, 0, 0, 0, 0, 568.663, 248.975, -11.6312, 29.7242, 11.6312, -29.7242, 569.955, 153.341, -38.7707, 20.6777, 38.7707, -20.6777, 625.526, 82.261, -11.6312, -6.46178, 11.6312, 6.46178, 705.652, 91.3075, -19.3853, -18.093, 19.3853, 18.093, 790.948, 113.278, -3.87707, -23.2624, 3.87707, 23.2624, 843.934, 155.925, 0, 0, 0, 0, 811.625, 216.666, 0, 0, 0, 0, 783.194, 285.161, -5.16942, -23.2624, 5.16942, 23.2624, 781.901, 344.609, 0, 0, 0, 0, 803.871, 402.765, -15.5083, -23.2624, 15.5083, 23.2624, 834.888, 468.675, 0, 0, 0, 0, 895.628, 503.569 )
+}
+
+[node name="root" type="Node2D"]
+
+[node name="PathOne" type="Path2D" parent="."]
+position = Vector2( 1, 3 )
+curve = SubResource( 1 )
+
+[node name="Enemy Spawner" type="Node" parent="PathOne"]
+script = ExtResource( 1 )
+drone = ExtResource( 2 )
+
+[node name="PathTwo" type="Path2D" parent="."]
+position = Vector2( -1.29236, 0 )
+curve = SubResource( 2 )
+
+[node name="Enemy Spawner2" type="Node" parent="PathTwo"]
+script = ExtResource( 1 )
+drone = ExtResource( 2 )
+
+[node name="GameManager" type="Control" parent="."]
+margin_left = -21.0
+margin_right = 19.0
+margin_bottom = 40.0
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LivesText" type="Label" parent="GameManager"]
+margin_left = 878.0
+margin_top = 10.0
+margin_right = 1036.0
+margin_bottom = 40.0
+text = "Lives Remaining"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="turret2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 679.036, 219.034 )
+
+[node name="archer" parent="." instance=ExtResource( 3 )]
+position = Vector2( 400.953, 398.089 )

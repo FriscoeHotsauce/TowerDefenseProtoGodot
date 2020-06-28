@@ -1,8 +1,6 @@
 extends Node
 
-
-onready var parent = get_parent()
-onready var path = parent.get_node("PathOne")
+onready var path = get_parent()
 export var spawn_interval = 5
 export (PackedScene) var drone
 var current_time
@@ -24,7 +22,6 @@ func update_cooldown(delta):
 	
 
 func spawn_dude():
-	print("breh")
 	var node = drone.instance()
 	path.add_child(node)
 	current_time = spawn_interval

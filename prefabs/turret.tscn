@@ -1,0 +1,76 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Scripts/laser.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/shooter.gd" type="Script" id=2]
+[ext_resource path="res://SpriteSheets/Heroes/female_archer.png" type="Texture" id=3]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 512, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 1024, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 1536, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 0, 7168, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 512, 7168, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 1024, 7168, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=8]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 1536, 7168, 512, 512 )
+
+[sub_resource type="SpriteFrames" id=9]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
+"loop": false,
+"name": "shoot",
+"speed": 8.0
+} ]
+
+[node name="archer" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PoolVector2Array( -1.51498, -4.94501 )
+width = 5.0
+default_color = Color( 0.882353, 0.494118, 0.262745, 1 )
+antialiased = true
+script = ExtResource( 1 )
+visibility_time = 0.1
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.146844, 0.146844 )
+frames = SubResource( 9 )
+animation = "idle"
+playing = true
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]

@@ -4,8 +4,11 @@ export var speed = 150
 export var HP = 3
 export var damageToBase = 1
 onready var gameManager
+onready var healthBar = $HealthBar
 
 func _ready():
+	healthBar.max_value = HP
+	updateHealthbar()
 	gameManager = get_node("/root/root/GameManager")
 	pass # Replace with function body.
 
@@ -31,5 +34,6 @@ func dealBaseDamage():
 	
 #todo
 func updateHealthbar():
-	self.scale.x = (HP / 3.0)
-	self.scale.y = (HP / 3.0)
+	healthBar.value = HP
+	#self.scale.x = (HP / 3.0)
+	#self.scale.y = (HP / 3.0)

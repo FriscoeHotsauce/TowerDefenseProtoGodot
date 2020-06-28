@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="TowerDefenseProto"
-run/main_scene="res://test_one.tscn"
+run/main_scene="res://Scenes/test_one.tscn"
 config/icon="res://icon.png"
 
 [rendering]
